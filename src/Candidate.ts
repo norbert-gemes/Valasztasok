@@ -5,6 +5,15 @@ export default class Candidate{
     #lastname: string;
     #party: string;
 
+    get candidatesFullName():string{
+        return this.#firstname + this.#lastname;
+    }
+    
+    get candidatesVote():number{
+        return this.#votes;
+    }
+    
+    
 
     constructor(row: string){
         const d: string[] = row.split(" ");
@@ -14,4 +23,6 @@ export default class Candidate{
         this.#lastname = d[3];
         this.#party = d[4];
     }
+    
+    
 }
