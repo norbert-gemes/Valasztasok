@@ -1,6 +1,7 @@
 ﻿import fs from "fs"; // https://nodejs.org/docs/latest-v14.x/api/fs.html
 import http from "http"; // https://nodejs.org/docs/latest-v14.x/api/http.html
 import url from "url"; // https://nodejs.org/docs/latest-v14.x/api/url.html
+import Solution from "./Solution";
 
 export default function content(req: http.IncomingMessage, res: http.ServerResponse): void {
     // favicon.ico kérés kiszolgálása:
@@ -23,8 +24,10 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     const params = new url.URL(req.url as string, `http://${req.headers.host}/`).searchParams;
 
     // Kezd a kódolást innen -->
+    const s:Solution = new Solution("szavazatok.txt");
 
-    res.write("Egyszerű Hello World! (2024/2025)\n");
+    // 3-as feladat (GN)
+    
    
     // <---- Fejezd be a kódolást
 
