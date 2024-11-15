@@ -24,17 +24,24 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     const params = new url.URL(req.url as string, `http://${req.headers.host}/`).searchParams;
 
     // Kezd a kódolást innen -->
-    const s:Solution = new Solution("szavazatok.txt");
+    const s: Solution = new Solution("szavazatok.txt");
 
     // 3-as feladat (GN)
     let inputFirstName: string = params.get("firstname") as string;
     if (inputFirstName == null) inputFirstName = "";
     res.write(`3. feladat:\n\tKérem a képviselőjelölt vezetéknevét: <input type='text' name='firstname' value='${inputFirstName}' style='max-width:100px;' onChange='this.form.submit();'>\n`);
-    
+
     let inputLastName: string = params.get("lastname") as string;
     if (inputLastName == null) inputLastName = "";
     res.write(`\tKérem a képviselőjelölt keresztnevét: <input type='text' name='lastname' value='${inputLastName}' style='max-width:100px;' onChange='this.form.submit(); '>\n`);
-   
+
+    let thirdWrite = res.write("");
+    if (inputFirstName != "" && inputLastName != "") {
+        thirdWrite = res.write(`\n\n \t3.feladat: ${s.inputVotesNumber(inputFirstName, inputLastName)} `);
+    } else {
+        thirdWrite = res.write("");
+    }
+
     // <---- Fejezd be a kódolást
 
     res.write("</pre></form></body></html>");
