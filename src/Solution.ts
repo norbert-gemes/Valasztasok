@@ -22,4 +22,4 @@ export default class Solution {
         }
         return "Ilyen nevű képviselőjelölt nem szerepela nyilvántartásban!";
     }
-}
+
