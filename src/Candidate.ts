@@ -1,12 +1,19 @@
-export default class Candidate{
+export default class Candidate {
     #electorateid: number;
     #votes: number;
     #firstname: string;
     #lastname: string;
     #party: string;
 
+    get candidatesFullName(): string {
+        return this.#firstname + " " + this.#lastname;
+    }
 
-    constructor(row: string){
+    get candidatesVote(): number {
+        return this.#votes;
+    }
+
+    constructor(row: string) {
         const d: string[] = row.split(" ");
         this.#electorateid = parseInt(d[0]);
         this.#votes = parseInt(d[1]);
