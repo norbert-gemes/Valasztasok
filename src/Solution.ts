@@ -13,6 +13,9 @@ export default class Solution {
                 this.#candidates.push(new Candidate(actualRow));
             });
     }
+    KettesFeladat(): number{
+        return this.#candidates.length;
+    }
 
     inputVotesNumber(firstname: string, lastname: string): string {
         for (const can of this.#candidates) {
@@ -22,4 +25,4 @@ export default class Solution {
         }
         return "Ilyen nevű képviselőjelölt nem szerepela nyilvántartásban!";
     }
-
+}
