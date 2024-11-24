@@ -43,7 +43,9 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     } else {
         thirdWrite = res.write("");
     }
-
+    // 4 feladat(kaplon)
+    res.write("\n\t4. feladat:");
+    res.write(`\n\t${s.sziatokhalohalo()}`)
     // <---- Fejezd be a kódolást
 
     res.write("</pre></form></body></html>");
