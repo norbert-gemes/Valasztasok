@@ -15,7 +15,7 @@ export default class Solution{
             this.#candidates.push(new Candidate(actualRow));
         })
     }
-    KettesFeladat(): number{
+    KettesFeladat(): number {
         return this.#candidates.length;
     }
 }
