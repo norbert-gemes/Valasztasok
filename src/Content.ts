@@ -26,6 +26,8 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     // Kezd a kódolást innen -->
     const s:Solution = new Solution("szavazatok.txt");
 
+    // 2. feladat (kaplon)
+    res.write(`A helyhatósági választáson ${s.KettesFeladat()} képviselőjelölt indult.`);
     // 3-as feladat (GN)
     
    
