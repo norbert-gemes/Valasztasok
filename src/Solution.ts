@@ -35,19 +35,6 @@ export default class Solution {
         return "Ilyen nevű képviselőjelölt nem szerepela nyilvántartásban!";
     }
 
-    getAllVotes(): number {
-        let allvote: number = 0;
-    // OsszesSzavazat(): number {
-    //     let szavazatSzam: number = 0;
-    //     for (const c of this.#candidates) {
-    //         szavazatSzam += c.candidatesVote;
-    //     }
-    //     return szavazatSzam;
-    // }
-
-    // szavazatSzazalek() {
-    //     return ((this.OsszesSzavazat()/ 12345) *100).toFixed(2);
-    // }
     sziatokhalohalo(){
         let szavazatSzam: number = 0;
             for (const c of this.#candidates) {
@@ -131,5 +118,4 @@ export default class Solution {
             console.error("Error writing to file:", error);
         }
     }
-}
 }
