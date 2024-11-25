@@ -44,7 +44,7 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
         thirdWrite = res.write("");
     }
     // 4 feladat(kaplon)
-    res.write("\n\t4. feladat:");
+    res.write("\n4. feladat:");
     res.write(`\n\t${s.sziatokhalohalo()}`)
 
     // 5.feladat (Norbi)
@@ -53,7 +53,8 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
 
     // 7.feladat: Fájlírás (Norbi)
     s.WriteToFile("kepviselok.txt", s.FirstOfAllElectorate());
-
+    res.write("\n6.feladat:");
+    res.write(`\n\t${s.hatodikfeladat()}`)
  
     // <---- Fejezd be a kódolást
 

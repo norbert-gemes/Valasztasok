@@ -118,4 +118,30 @@ export default class Solution {
             console.error("Error writing to file:", error);
         }
     }
+    hatodikfeladat(){
+        let maxSzavazatok = 0;
+        let maxNames: string[] = [];
+        let maxParties: string[] = [];
+        for (const c of this.#candidates) {
+            if (c.candidatesVote > maxSzavazatok) {
+                maxSzavazatok = c.candidatesVote;
+            }
+        }
+        for (const a of this.#candidates) {
+            if(a.candidatesVote == maxSzavazatok){
+                maxNames.push(a.candidatesFullName);
+                if(a.candidateParty == "-"){
+                    maxParties.push("független");
+                }
+                else{
+                    maxParties.push(a.candidateParty);
+                }
+            }
+        }
+        let result = "";
+        for (let i = 0; i < maxNames.length; i++) {
+            result += `\n\tNév: ${maxNames[i]} Párt: ${maxParties[i]}`;
+        }
+        return result;
+    }
 }
