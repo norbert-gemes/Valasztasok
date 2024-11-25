@@ -7,6 +7,7 @@ export default class Solution {
     constructor(source: string) {
         fs.readFileSync(source)
             .toString()
+            .trim()
             .split("\n")
             .forEach(row => {
                 const actualRow: string = row.trim();
