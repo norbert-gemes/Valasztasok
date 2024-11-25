@@ -62,4 +62,39 @@ export default class Solution {
         }
         return finalString;
     }
+
+    FirstOfAllElectorateWriteFile(FileName:string):void{
+        let electorates: number[] = [];
+        let maxVotes: number[] = [];
+        let maxNames: string[] = [];
+        let maxParties: string[] =[];
+        // electorates = electorates.sort((a,b) => a - b);
+        for (const c of this.#candidates) {
+            // electorates = electorates.sort((a,b) => a - b);
+
+            if (!electorates.includes(c.candidateElectroliteID)) {
+                electorates.push(c.candidateElectroliteID);
+                maxVotes.push(c.candidatesVote);
+                maxNames.push(c.candidatesFullName);
+                maxParties.push(c.candidateParty);
+            }
+            else{
+                if (c.candidatesVote > maxVotes[electorates.indexOf(c.candidateElectroliteID)]) {
+                    maxVotes[electorates.indexOf(c.candidateElectroliteID)] = c.candidatesVote;
+                    maxNames[electorates.indexOf(c.candidateElectroliteID)] = c.candidatesFullName;
+                    maxParties[electorates.indexOf(c.candidateElectroliteID)] = c.candidateParty;
+                }
+            }
+        }
+        console.log(electorates);
+        console.log(maxVotes);
+        console.log(maxNames);
+        console.log(maxParties);
+
+    //    for (const c of this.#candidates) {
+    //         if (maxNames.includes(c.candidatesFullName)) {
+    //             fs.writeFileSync(FileName, `${electorates[maxNames.indexOf(c.candidatesFullName)]} ${c.candidatesFullName.split(' ')[0]} ${c.candidatesFullName.split(' ')[1]} ${c.candidateParty} `)
+    //         }
+    //    }
+    }
 }

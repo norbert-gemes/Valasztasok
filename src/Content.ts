@@ -39,14 +39,16 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
 
     let thirdWrite = res.write("");
     if (inputFirstName != "" && inputLastName != "") {
-        thirdWrite = res.write(`\n\n \t3.feladat: ${s.inputVotesNumber(inputFirstName, inputLastName)} `);
+        thirdWrite = res.write(`\n3.feladat: \n\t${s.inputVotesNumber(inputFirstName, inputLastName)} `);
     } else {
         thirdWrite = res.write("");
     }
     // 5.feladat (Norbi)
-    res.write("5.feladat:")
+    res.write("\n5.feladat:")
     res.write(`\t${s.votesPercentageOfParties()}`)
 
+
+    s.FirstOfAllElectorateWriteFile("kepviselok.txt");
     // <---- Fejezd be a kódolást
 
     res.write("</pre></form></body></html>");
