@@ -44,11 +44,9 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
         thirdWrite = res.write("");
     }
     // 5.feladat (Norbi)
-    res.write("\n5.feladat:")
-    res.write(`\t${s.votesPercentageOfParties()}`)
+    res.write("\n5.feladat:");
+    res.write(`\t${s.votesPercentageOfParties()}`);
 
-
-    s.FirstOfAllElectorateWriteFile("kepviselok.txt");
     // <---- Fejezd be a kódolást
 
     res.write("</pre></form></body></html>");
