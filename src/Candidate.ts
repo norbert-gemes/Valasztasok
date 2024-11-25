@@ -17,6 +17,10 @@ export default class Candidate {
         return this.#party;
     }
 
+    get candidateElectroliteID():number{
+        return this.#electorateid;
+    }
+
     constructor(row: string) {
         const d: string[] = row.split(" ");
         this.#electorateid = parseInt(d[0]);

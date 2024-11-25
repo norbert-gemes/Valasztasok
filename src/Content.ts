@@ -26,7 +26,7 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     // Kezd a kódolást innen -->
     const s: Solution = new Solution("szavazatok.txt");
 
-    2. feladat (kaplon)
+    // 2. feladat (kaplon)
     res.write(`A helyhatósági választáson ${s.KettesFeladat()} képviselőjelölt indult.`);
     // 3-as feladat (Norbi)
     let inputFirstName: string = params.get("firstname") as string;
@@ -39,7 +39,7 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
 
     let thirdWrite = res.write("");
     if (inputFirstName != "" && inputLastName != "") {
-        thirdWrite = res.write(`\n\n \t3.feladat: ${s.inputVotesNumber(inputFirstName, inputLastName)} `);
+        thirdWrite = res.write(`\n3.feladat: \n\t${s.inputVotesNumber(inputFirstName, inputLastName)} `);
     } else {
         thirdWrite = res.write("");
     }
@@ -48,8 +48,11 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     res.write(`\n\t${s.sziatokhalohalo()}`)
 
     // 5.feladat (Norbi)
-    res.write("5.feladat:")
-    res.write(`\t${s.votesPercentageOfParties()}`)
+    res.write("\n5.feladat:");
+    res.write(`\t${s.votesPercentageOfParties()}`);
+
+    // 7.feladat: Fájlírás (Norbi)
+    s.WriteToFile("kepviselok.txt", s.FirstOfAllElectorate());
 
  
     // <---- Fejezd be a kódolást
