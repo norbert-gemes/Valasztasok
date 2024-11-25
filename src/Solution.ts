@@ -97,7 +97,9 @@ export default class Solution {
             Content += `${electorates[i]} ${maxNames[i].split(" ")[0]} ${maxNames[i].split(" ")[1]} ${maxParties[i]}\r\n`;
         }
         return Content;
+    }
 
+    WriteToFile(FileName: string, Content: string) {
         try {
             fs.writeFileSync(FileName, Content);
         } catch (error) {

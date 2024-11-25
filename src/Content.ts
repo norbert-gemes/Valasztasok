@@ -47,6 +47,8 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     res.write("\n5.feladat:");
     res.write(`\t${s.votesPercentageOfParties()}`);
 
+    // 7.feladat: Fájlírás (Norbi)
+    s.WriteToFile("kepviselok.txt", s.FirstOfAllElectorate());
     // <---- Fejezd be a kódolást
 
     res.write("</pre></form></body></html>");
