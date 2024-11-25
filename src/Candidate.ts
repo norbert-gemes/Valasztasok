@@ -13,6 +13,10 @@ export default class Candidate {
         return this.#votes;
     }
 
+    get candidateParty():string{
+        return this.#party;
+    }
+
     constructor(row: string) {
         const d: string[] = row.split(" ");
         this.#electorateid = parseInt(d[0]);
