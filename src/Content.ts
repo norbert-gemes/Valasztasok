@@ -26,8 +26,8 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     // Kezd a kódolást innen -->
     const s: Solution = new Solution("szavazatok.txt");
 
-    // 2. feladat (kaplon)
-    // res.write(`A helyhatósági választáson ${s.KettesFeladat()} képviselőjelölt indult.`);
+    2. feladat (kaplon)
+    res.write(`A helyhatósági választáson ${s.KettesFeladat()} képviselőjelölt indult.`);
     // 3-as feladat (Norbi)
     let inputFirstName: string = params.get("firstname") as string;
     if (inputFirstName == null) inputFirstName = "";
@@ -43,10 +43,15 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     } else {
         thirdWrite = res.write("");
     }
+    // 4 feladat(kaplon)
+    res.write("\n\t4. feladat:");
+    res.write(`\n\t${s.sziatokhalohalo()}`)
+
     // 5.feladat (Norbi)
     res.write("5.feladat:")
     res.write(`\t${s.votesPercentageOfParties()}`)
 
+ 
     // <---- Fejezd be a kódolást
 
     res.write("</pre></form></body></html>");
