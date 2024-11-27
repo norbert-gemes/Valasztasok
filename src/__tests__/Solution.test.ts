@@ -16,5 +16,18 @@ describe("Solution class tests", ()=>{
         expect(typeof(instance.getAllVotes())).toBe("number");
         expect(typeof(instance.getAllVotes)).toBe("function");
     });
-    
+    it("Testing \"votesPercentageOfParties\" method",()=>{
+        expect(typeof(instance.votesPercentageOfParties())).toBe("string");
+        expect(typeof(instance.votesPercentageOfParties)).toBe("function");
+        expect(instance.votesPercentageOfParties().trim().split("\n").length).toBe(5);
+    });
+    it("testing \"FirstOfAllElectorate\" method",()=>{
+        expect(typeof(instance.FirstOfAllElectorate())).toBe("string");
+        expect(typeof(instance.FirstOfAllElectorate)).toBe("function");
+        expect(instance.FirstOfAllElectorate().split("\n").length).toBe(9);
+    });
+    it("Testing \"WriteToFile\" method and kepviselok.txt and kepviselokOH.txt files compare",()=>{
+        instance.WriteToFile("kepviselok.txt", instance.FirstOfAllElectorate());
+        expect(fs.readFileSync("kepviselok.txt").toString()).toBe(fs.readFileSync("kepviselokOH.txt").toString());    
+    });
 });
