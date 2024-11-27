@@ -100,13 +100,13 @@ export default class Solution {
         let Content: string = "";
         for (const mc of maxCandidates) {
             if (mc.candidateParty == "-") {
-                Content += `${mc.candidateElectroliteID} ${mc.candidatesFullName.split(" ")[0]} ${mc.candidatesFullName.split(" ")[1]} független\n`;
+                Content += `${mc.candidateElectroliteID} ${mc.candidatesFullName.split(" ")[0]} ${mc.candidatesFullName.split(" ")[1]} független\r\n`;
             }
             else{
-                Content += `${mc.candidateElectroliteID} ${mc.candidatesFullName.split(" ")[0]} ${mc.candidatesFullName.split(" ")[1]} ${mc.candidateParty}\n`;
+                Content += `${mc.candidateElectroliteID} ${mc.candidatesFullName.split(" ")[0]} ${mc.candidatesFullName.split(" ")[1]} ${mc.candidateParty}\r\n`;
             }
         }
-        return Content.trim();
+        return Content;
     }
 
     WriteToFile(FileName: string, Content: string) {
