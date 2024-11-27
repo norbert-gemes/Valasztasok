@@ -73,42 +73,40 @@ export default class Solution {
         return finalString;
     }
 
-    FirstOfAllElectorate(): string {
-        let electorates: number[] = [];
-        let maxVotes: number[] = [];
-        let maxNames: string[] = [];
-        let maxParties: string[] = [];
+    #districtMaxVote(dist: number): Candidate {
+        let maxVote:number = this.#candidates[0].candidatesVote;
+        let maxCandidate:Candidate = this.#candidates[0];
         for (const c of this.#candidates) {
-            // electorates = electorates.sort((a, b) => a - b);
+            if (c.candidateElectroliteID == dist && c.candidatesVote > maxVote) {
+                maxVote = c.candidatesVote;
+                maxCandidate = c;
+            }
+        }
+        return maxCandidate;
+    };
+
+    FirstOfAllElectorate(): string {
+        let electorates:number[] = [];
+        let maxCandidates:Candidate[] = [];
+        for (const c of this.#candidates) {
             if (!electorates.includes(c.candidateElectroliteID)) {
                 electorates.push(c.candidateElectroliteID);
-                maxVotes.push(c.candidatesVote);
-                maxNames.push(c.candidatesFullName);
-                maxParties.push(c.candidateParty);
-            } else {
-                if (c.candidatesVote > maxVotes[electorates.indexOf(c.candidateElectroliteID)]) {
-                    maxVotes[electorates.indexOf(c.candidateElectroliteID)] = c.candidatesVote;
-                    maxNames[electorates.indexOf(c.candidateElectroliteID)] = c.candidatesFullName;
-                    maxParties[electorates.indexOf(c.candidateElectroliteID)] = c.candidateParty;
-                }
+                electorates.sort((a,b)=> a -b);
             }
         }
-        for (let i = 0; i < maxParties.length; i++) {
-            if (maxParties[i] == "-") {
-                maxParties[i] = "Független";
-            } else {
-                for (const p of this.#partiesShort) {
-                    if (maxParties[i] == p[0]) {
-                        maxParties[i] = p[1];
-                    }
-                }
-            }
+        for (const e of electorates) {
+            maxCandidates.push(this.#districtMaxVote(e));
         }
         let Content: string = "";
-        for (let i = 0; i < electorates.length; i++) {
-            Content += `${electorates[i]} ${maxNames[i].split(" ")[0]} ${maxNames[i].split(" ")[1]} ${maxParties[i]}\r\n`;
+        for (const mc of maxCandidates) {
+            if (mc.candidateParty == "-") {
+                Content += `${mc.candidateElectroliteID} ${mc.candidatesFullName.split(" ")[0]} ${mc.candidatesFullName.split(" ")[1]} független\n`;
+            }
+            else{
+                Content += `${mc.candidateElectroliteID} ${mc.candidatesFullName.split(" ")[0]} ${mc.candidatesFullName.split(" ")[1]} ${mc.candidateParty}\n`;
+            }
         }
-        return Content;
+        return Content.trim();
     }
 
     WriteToFile(FileName: string, Content: string) {
