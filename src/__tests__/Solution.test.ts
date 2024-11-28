@@ -29,5 +29,5 @@ describe("Solution class tests", () => {
     it('Testing "WriteToFile" method and kepviselok.txt and kepviselokOH.txt files compare', () => {
         instance.WriteToFile("kepviselok.txt", instance.FirstOfAllElectorate());
         expect(fs.readFileSync("kepviselok.txt").toString()).toStrictEqual(fs.readFileSync("kepviselokOH.txt").toString());
-    });
+    }); 
 });
