@@ -1,6 +1,8 @@
 import Solution from "../Solution";
 import fs from "fs";
 
+
+
 describe("Solution class tests", () => {
     const instance = new Solution("szavazatok.txt");
 
@@ -29,5 +31,22 @@ describe("Solution class tests", () => {
     it('Testing "WriteToFile" method and kepviselok.txt and kepviselokOH.txt files compare', () => {
         instance.WriteToFile("kepviselok.txt", instance.FirstOfAllElectorate());
         expect(fs.readFileSync("kepviselok.txt").toString()).toStrictEqual(fs.readFileSync("kepviselokOH.txt").toString());
+    });
+    it("2. feladat tesztelése", () => {
+        expect(typeof instance.KettesFeladat()).toBe("number");
+        expect(instance.KettesFeladat()).toBe(40);
+    });
+    it("4. feladat tesztelése", () => {
+        expect(typeof instance.sziatokhalohalo()).toBe("string");
+        expect(typeof instance.sziatokhalohalo).toBe("function");
+        expect(instance.sziatokhalohalo()).toContain("4713");
+        expect(instance.sziatokhalohalo()).toContain("38.18%");
+    });
+    it("6. feladat tesztelése", () => {
+        expect(typeof instance.hatodikfeladat()).toBe("string");
+        expect(typeof instance.hatodikfeladat).toBe("function");
+        expect(instance.hatodikfeladat()).toContain('Név: Joghurt Jakab Párt: TISZ');
+        expect(instance.hatodikfeladat()).toContain('Név: Narancs Edmond Párt: GYEP');
+        expect(instance.hatodikfeladat()).toContain('Név: Vadas Marcell Párt: HEP');
     });
 });
