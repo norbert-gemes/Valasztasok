@@ -1,3 +1,4 @@
+import { error } from "console";
 import Solution from "../Solution";
 import fs from "fs";
 
@@ -5,6 +6,7 @@ import fs from "fs";
 
 describe("Solution class tests", () => {
     const instance = new Solution("szavazatok.txt");
+    const instance2 = new Solution("test.txt");
 
     it("Solution instance test", () => {
         expect(instance).toBeInstanceOf(Solution);
@@ -32,6 +34,13 @@ describe("Solution class tests", () => {
         instance.WriteToFile("kepviselok.txt", instance.FirstOfAllElectorate());
         expect(fs.readFileSync("kepviselok.txt").toString()).toStrictEqual(fs.readFileSync("kepviselokOH.txt").toString());
     });
+    it('Testing WriteToFile if the fileName not correct',()=>{
+        function expectError(){
+            const error = instance.WriteToFile("test.txt", instance.FirstOfAllElectorate());
+        }
+        expect(expectError).toThrow();
+        expect(expectError).toThrow("Rossz nevet adott a fájlnak! (A helyes fájlnév kepviselok.txt)");
+    });
     it("2. feladat tesztelése", () => {
         expect(typeof instance.KettesFeladat()).toBe("number");
         expect(instance.KettesFeladat()).toBe(40);
@@ -48,5 +57,6 @@ describe("Solution class tests", () => {
         expect(instance.hatodikfeladat()).toContain('Név: Joghurt Jakab Párt: TISZ');
         expect(instance.hatodikfeladat()).toContain('Név: Narancs Edmond Párt: GYEP');
         expect(instance.hatodikfeladat()).toContain('Név: Vadas Marcell Párt: HEP');
+        expect(instance2.hatodikfeladat()).toContain('Név: Kiss Pista Párt: független');
     });
 });
