@@ -110,12 +110,14 @@ export default class Solution {
     }
 
     WriteToFile(FileName: string, Content: string) {
-        try {
+        if (FileName == "kepviselok.txt") {
             fs.writeFileSync(FileName, Content);
-        } catch (error) {
-            console.error("Error writing to file:", error);
+        }
+        else{
+            throw new Error("Rossz nevet adott a fájlnak! (A helyes fájlnév kepviselok.txt)");
         }
     }
+
     hatodikfeladat(){
         let maxSzavazatok = 0;
         let maxNames: string[] = [];
